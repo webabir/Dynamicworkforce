@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|assets|public|css|ico|db|images|img|js|upload|robots\.txt|sitemap\.xml|adminer\.php)
+RewriteRule ^(.*)$ index.php?/$1 [L]
+
+RewriteEngine On
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
